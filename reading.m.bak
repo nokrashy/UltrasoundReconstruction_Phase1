@@ -24,19 +24,4 @@ for n=1:N
     output(n) = bg(1)*d(1)+bg(2)*d(2)+bg(3)*d(3); % compute feedforward
 end
 %plot(x)
-%% low pass filter , cut off frequency = 4.5 MHZ
-
-b=[1.0000, 2.0000,1.0000]; 
-a=[1.0000,-0.74778917825850344,0.27221493792500728]; 
-Gain=0.13110643991662596 ; 
-bg=Gain*b; 
-d=zeros(3,1); 
-finaloutput=zeros(N,1); 
-
-for n=1:N
-    d=[0;d(1:end-1)]; 
-    d(1) = output(n)- a(2)*d(2)- a(3)*d(3);
-    finaloutput(n) = bg(1)*d(1)+bg(2)*d(2)+bg(3)*d(3); 
-end
 plot(output)
-plot(finaloutput)
